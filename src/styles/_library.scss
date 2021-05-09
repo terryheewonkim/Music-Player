@@ -35,6 +35,17 @@
   }
 }
 
+.selected {
+  background: rgb(109, 81, 165);
+  h3,
+  h4 {
+    color: #fff;
+  }
+  &:hover {
+    background: rgb(109, 81, 165);
+  }
+}
+
 // Style scroll bar
 
 * {
