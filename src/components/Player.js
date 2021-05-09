@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -17,19 +17,27 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
     duration: 0,
   });
 
-  // Event handlers
-  const playSongHandler = () => {
-    setIsPlaying(!isPlaying);
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
+  // Effect
+  useEffect(() => {
+    var playPromise = audioRef.current[isPlaying ? "play" : "pause"]();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {});
     }
-  };
+  }, [isPlaying, currentSong]);
+
+  // Event handlers
+  // const playSongHandler = () => {
+  //   setIsPlaying(!isPlaying);
+  //   if (isPlaying) {
+  //     audioRef.current.pause();
+  //   } else {
+  //     audioRef.current.play();
+  //   }
+  // };
 
   const timeUpdateHandler = (e) => {
     const current = e.target.currentTime;
-    const duration = e.target.duration;
+    const duration = e.target.duration || 0;
     setSongInfo({ ...songInfo, currentTime: current, duration });
   };
 
@@ -60,7 +68,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
       <div className="play-control">
         <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />
         <FontAwesomeIcon
-          onClick={playSongHandler}
+          onClick={() => setIsPlaying(!isPlaying)}
           className="play"
           size="2x"
           icon={isPlaying ? faPause : faPlay}
