@@ -6,6 +6,11 @@
 
 body {
   font-family: "Lato", sans-serif;
+  height: 100vh;
+  background-image: url("./neutral-background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 h1,
