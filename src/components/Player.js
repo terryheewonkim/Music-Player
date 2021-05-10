@@ -34,15 +34,6 @@ const Player = ({
 
   // Event handlers
 
-  // const playSongHandler = () => {
-  //   setIsPlaying(!isPlaying);
-  //   if (isPlaying) {
-  //     audioRef.current.pause();
-  //   } else {
-  //     audioRef.current.play();
-  //   }
-  // };
-
   const timeUpdateHandler = (e) => {
     const current = e.target.currentTime;
     const duration = e.target.duration || 0;
