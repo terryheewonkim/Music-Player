@@ -16,7 +16,7 @@
   }
 }
 
-// Add class to img when isPlaying state is true 
+// Add class to img when isPlaying state is true
 .pulse-animate {
   animation: pulse 2s infinite;
 }
@@ -38,6 +38,7 @@
 
 @media screen and (max-width: 768px) {
   .song-container {
+    min-height: 50vh;
     img {
       width: 60%;
     }

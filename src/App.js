@@ -32,6 +32,7 @@ function App() {
         currentSong={currentSong}
         setCurrentSong={setCurrentSong}
         libraryStatus={libraryStatus}
+        setLibraryStatus={setLibraryStatus}
       />
     </div>
   );
